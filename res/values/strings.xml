@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="app_name">Hi-Q Recorder SmartWatch Widget</string>
+    <string name="extension_name">Hi-Q Recorder Widget</string>
+    <string name="preference_activity_title">Hi-Q Recorder Widget Settings</string>
+    <string name="configuration_text">Hi-Q Recorder Widget Settings</string>
+    
+</resources>

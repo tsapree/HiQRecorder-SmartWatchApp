@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+		<EditTextPreference android:key="path" android:title="Path" android:defaultValue="" android:summary="Directory with recordings made by Hi-Q MP3 Voice Recorder. Used to check state of recorder."/>
+	</PreferenceScreen>
