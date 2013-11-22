@@ -28,14 +28,14 @@ public class HiQWidgetRegistrationInformation extends RegistrationInformation {
     public int getRequiredWidgetApiVersion() {
         return 1;
     }
-
+    
     @Override
-    public int getRequiredNotificationApiVersion() {
-        return 0;
+    public int getRequiredControlApiVersion() {
+        return 1;
     }
 
     @Override
-    public int getRequiredControlApiVersion() {
+    public int getRequiredNotificationApiVersion() {
         return 0;
     }
 
@@ -58,27 +58,25 @@ public class HiQWidgetRegistrationInformation extends RegistrationInformation {
 
     @Override
     public ContentValues getExtensionRegistrationConfiguration() {
-        String iconHostapp = ExtensionUtils.getUriString(mContext,
-                R.drawable.ic_hiq);
-        String iconExtension = ExtensionUtils.getUriString(mContext,
-                R.drawable.icon_extension);
+        String iconHostapp = ExtensionUtils.getUriString(mContext,  R.drawable.ic_hiq);
+        String iconExtension = ExtensionUtils.getUriString(mContext, R.drawable.icon_extension);
 
         ContentValues values = new ContentValues();
 
-        values.put(Registration.ExtensionColumns.CONFIGURATION_ACTIVITY,
-                HiQWidgetPreferencesActivity.class.getName());
-        values.put(Registration.ExtensionColumns.CONFIGURATION_TEXT,
-                mContext.getString(R.string.configuration_text));
-        values.put(Registration.ExtensionColumns.NAME,
-                mContext.getString(R.string.extension_name));
+        values.put(Registration.ExtensionColumns.CONFIGURATION_ACTIVITY, HiQWidgetPreferencesActivity.class.getName());
+        values.put(Registration.ExtensionColumns.CONFIGURATION_TEXT, mContext.getString(R.string.configuration_text));
+        values.put(Registration.ExtensionColumns.NAME, mContext.getString(R.string.extension_name));
         values.put(Registration.ExtensionColumns.EXTENSION_KEY, HiQWidgetExtensionService.EXTENSION_KEY);
         values.put(Registration.ExtensionColumns.HOST_APP_ICON_URI, iconHostapp);
         values.put(Registration.ExtensionColumns.EXTENSION_ICON_URI, iconExtension);
-        values.put(Registration.ExtensionColumns.NOTIFICATION_API_VERSION,
-                getRequiredNotificationApiVersion());
+        values.put(Registration.ExtensionColumns.NOTIFICATION_API_VERSION, getRequiredNotificationApiVersion());
         values.put(Registration.ExtensionColumns.PACKAGE_NAME, mContext.getPackageName());
 
         return values;
     }
 
+    @Override
+    public boolean isDisplaySizeSupported(int width, int height) {
+        return (width == HiQControlSmartWatch.getSupportedControlWidth(mContext) && height == HiQControlSmartWatch.getSupportedControlHeight(mContext) );
+    }
 }
