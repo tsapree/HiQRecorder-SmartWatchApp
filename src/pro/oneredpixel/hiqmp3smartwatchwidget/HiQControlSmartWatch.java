@@ -8,6 +8,7 @@ import android.text.format.DateUtils;
 import android.util.DisplayMetrics;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.sonyericsson.extras.liveware.aef.control.Control;
 import com.sonyericsson.extras.liveware.extension.util.control.ControlExtension;
@@ -77,7 +78,7 @@ public class HiQControlSmartWatch extends ControlExtension {
     @Override
     public void onTouch(final ControlTouchEvent event) {
     	//TODO: ПРОБЛЕМА с SmartWatch2, сдвинута граница срабатывания, пофиксить.
-        if (event.getAction() == Control.Intents.TOUCH_ACTION_RELEASE) {
+        if ((hql!=null) && (event.getAction() == Control.Intents.TOUCH_ACTION_RELEASE)) {
         	if (hql.getApplicationInstalledStatus()) {
         		//Intent intent;
 	    		if (event.getX()<(width/2)) {
@@ -90,6 +91,7 @@ public class HiQControlSmartWatch extends ControlExtension {
  		
         	}
         }
+        draw();
     }
 
     public void draw () {
@@ -103,6 +105,7 @@ public class HiQControlSmartWatch extends ControlExtension {
 	    	if (hql.getApplicationInstalledStatus()) {
 	    		hql.updateStatus();
 	    		controlLayout = (LinearLayout)LinearLayout.inflate(mContext, R.layout.control, root);
+	    		((TextView)controlLayout.findViewById(R.id.widget_status)).setText(hql.getTextStatus());
 		        //showBitmap(new HiQWidgetImage(mContext, hql.getTextStatus()).getBitmap());
 	    	} else {
 	    		//show install app helper
