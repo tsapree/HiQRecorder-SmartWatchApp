@@ -77,19 +77,19 @@ public class HiQControlSmartWatch extends ControlExtension {
 
     @Override
     public void onTouch(final ControlTouchEvent event) {
-    	//TODO: ПРОБЛЕМА с SmartWatch2, сдвинута граница срабатывания, пофиксить.
         if ((hql!=null) && (event.getAction() == Control.Intents.TOUCH_ACTION_RELEASE)) {
-        	if (hql.getApplicationInstalledStatus()) {
-        		//Intent intent;
-	    		if (event.getX()<(width/2)) {
-	    			hql.sendStart();
-	    		} else {
-	    			hql.sendStop();
-	    		}
-        	} else {
-	    		hql.sendInstallApp(event.getX()>=(width/2));
- 		
-        	}
+        	if ((event.getY()>((width*2)/5)) && (event.getY()<((width*4)/5)) ) {
+	        	if (hql.getApplicationInstalledStatus()) {
+		    		if (event.getX()<(width/2)) {
+		    			hql.sendStart();
+		    		} else {
+		    			hql.sendStop();
+		    		}
+	        	} else {
+		    		hql.sendInstallApp(event.getX()>=(width/2));
+	 		
+	        	}
+    		}
         }
         draw();
     }

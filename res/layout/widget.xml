@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:text="Start"
-                android:textColor="@color/smart_watch_text_color_orange"
+                android:textColor="#c0c0c0"
                 android:textSize="16px"
                 android:textStyle="bold" />
 
@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:text="Stop"
-                android:textColor="@color/smart_watch_text_color_orange"
+                android:textColor="#c0c0c0"
                 android:textSize="16px"
                 android:textStyle="bold" />
 
