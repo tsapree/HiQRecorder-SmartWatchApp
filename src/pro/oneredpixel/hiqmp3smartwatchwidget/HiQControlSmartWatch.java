@@ -72,7 +72,8 @@ public class HiQControlSmartWatch extends ControlExtension {
 
     @Override
     public void onPause() {
-    	mPeriodicUpdate.stop();
+    	if (mPeriodicUpdate!=null)
+    		mPeriodicUpdate.stop();
     }
 
     @Override
@@ -127,10 +128,6 @@ public class HiQControlSmartWatch extends ControlExtension {
 
     }
     
-    /**
-     * The animation class shows an animation on the accessory. The animation
-     * runs until mHandler.removeCallbacks has been called.
-     */
     private class PeriodicUpdate implements Runnable {
 
         private boolean mIsStopped = false;
